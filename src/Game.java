@@ -38,9 +38,10 @@ public class Game {
 			enemy.levelUp();
 			System.out.println(enemy.getName() + " Wins!");
 		}
-		else
+		else {
 			player.levelUp();
 		System.out.println(player.getName() + " Wins!");
+		}
 
 	}
 

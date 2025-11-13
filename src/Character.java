@@ -24,10 +24,10 @@ public class Character {
 
 		if (level > 5) {
 			this.level = 5;
-			System.out.println("level cannot be higher then 5. Health has been set to 5");
+			System.out.println("Level cannot be higher then 5. Health has been set to 5");
 		} else if (level < 0) {
 			this.level = 0;
-			System.out.println("Health cannot be lower then 0. Health has been set to 0");
+			System.out.println("Level cannot be lower then 0. level has been set to 5");
 		} else
 			this.level = level;
 
@@ -46,7 +46,7 @@ public class Character {
 	}
 
 	public void levelUp() {
-		if (this.level > 5)
+		if (this.level >= 5)
 			System.out.println("Max level!");
 		else
 			level++;
