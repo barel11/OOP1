@@ -61,7 +61,7 @@ public class Character {
 
 	@Override
 	public String toString() {
-		return "Name: " + name + "\n" + "Health: " + health + "/n" + "Level: " + level;
+		return "Name: " + name + "\n" + "Health: " + health + "\n" + "Level: " + level;
 
 	}
 
