@@ -19,7 +19,7 @@ public class Item {
 	public String toString() {
 		String Magical = isMagical ? "Magical Item" : "Not Magical";
 		return "Name: " + name +  "\n"
-		+ "Value" + value + "\n"
+		+ "Value " + value + "\n"
 		+ Magical;
 	}
 

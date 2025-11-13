@@ -42,7 +42,7 @@ public class GameWorld {
     
     @Override
     public String toString() {
-    	return "World Name: " + name + "\n" + "Difficulty: " + difficulty + "/n" +
+    	return "World Name: " + name + "\n" + "Difficulty: " + difficulty + "\n" +
     			"Number of players: " + players.size();
     }
 
