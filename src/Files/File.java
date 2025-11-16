@@ -1,3 +1,4 @@
+package Files;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -53,12 +54,12 @@ public class File {
 		}
 	}
 
-	public static void readNameFiles(String fileName) {
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+	//public static void readNameFiles(String fileName) {
+		//try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
 			
 
-		}
-	}
+		//}
+	//}
 }
 
 
