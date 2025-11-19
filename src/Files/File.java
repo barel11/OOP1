@@ -59,6 +59,10 @@ public class File {
 
 			String line1 = reader1.readLine();
 			String line2 = reader2.readLine();
+			
+			System.out.println("Report generated successfully: report.txt");
+			System.out.println("\nReport content:");
+			
 
 			while (line1 != null && line2 != null) {
 				String[] p1 = line1.split(" ");
@@ -67,6 +71,7 @@ public class File {
 				int id1 = Integer.parseInt(p1[2]);
 				int id2 = Integer.parseInt(p2[0]);
 
+				
 				if (id1 < id2) {
 					line1 = reader1.readLine();
 				} else if (id1 > id2) {
@@ -74,25 +79,18 @@ public class File {
 				} else {
 					int avg = (Integer.parseInt(p2[1]) + Integer.parseInt(p2[2])) / 2;
 					out.println(id1 + " " + p1[0] + " " + p1[1] + " " + avg);
+					System.out.println(id1 + " " + p1[0] + " " + p1[1] + " " + avg);
 
 					line1 = reader1.readLine();
 					line2 = reader2.readLine();
 				}
 			}
-			
-			 System.out.println("Report generated successfully: report.txt");
-			 
-			 System.out.println("\nReport content:");
-		        try (BufferedReader reportReader = new BufferedReader(new FileReader("report.txt"))) {
-		            String reportLine;
-		            while ((reportLine = reportReader.readLine()) != null) {
-		                System.out.println(reportLine);
-		            }
-		        }
+
 
 		} catch (IOException e) {
 			System.out.println("Error reading file: " + e.getMessage());
 		}
 	}
-
 }
+
+
