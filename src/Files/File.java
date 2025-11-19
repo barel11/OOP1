@@ -79,6 +79,16 @@ public class File {
 					line2 = reader2.readLine();
 				}
 			}
+			
+			 System.out.println("Report generated successfully: report.txt");
+			 
+			 System.out.println("\nReport content:");
+		        try (BufferedReader reportReader = new BufferedReader(new FileReader("report.txt"))) {
+		            String reportLine;
+		            while ((reportLine = reportReader.readLine()) != null) {
+		                System.out.println(reportLine);
+		            }
+		        }
 
 		} catch (IOException e) {
 			System.out.println("Error reading file: " + e.getMessage());
