@@ -14,6 +14,8 @@ public class File {
 		System.out.println("\nBoth files were found successfully.");
 		System.out.println("File 1: " + fileName1);
 		System.out.println("File 2: " + fileName2);
+		
+		readNameFiles(fileName1 , fileName2);
 
 		scanner.close();
 	}
@@ -49,24 +51,39 @@ public class File {
 		}
 	}
 
-	//public static void readNameFiles(String fileName) {
-		//try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			
+	public static void readNameFiles(String fileName1 , String fileName2) {
+		try (BufferedReader reader1 = new BufferedReader(new FileReader(fileName1));
+				BufferedReader reader2 = new BufferedReader(new FileReader(fileName2));
+				PrintWriter out = new PrintWriter("report.txt")) {
 
-		//}
-	//}
+			String line1 = reader1.readLine();
+			String line2 = reader2.readLine();
+
+			while(line1 != null && line2 != null) {
+				String[] p1 = line1.split(" ");
+				String[] p2 = line2.split(" ");
+
+				int id1 = Integer.parseInt(p1[2]);  
+				int id2 = Integer.parseInt(p2[0]);
+
+				if (id1 < id2) {
+					line1 = reader1.readLine();
+				} else if (id1 > id2) {
+					line2 = reader2.readLine();
+				} else {
+					int avg = (Integer.parseInt(p2[1]) + Integer.parseInt(p2[2])) / 2;
+					out.println(id1 + " " + p1[0] + " " + p1[1] + " " + avg);
+
+					line1 = reader1.readLine();
+					line2 = reader2.readLine();
+				}
+			}
+
+		}
+		catch(IOException e) {
+			System.out.println("Error reading file: " + e.getMessage());				
+		}
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
