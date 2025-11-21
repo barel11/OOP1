@@ -1,34 +1,41 @@
-import java.util.ArrayList;
-
 public class Player extends Character {
 
-    private ArrayList<Item> inventory;
+    private Item[] inventory;
 
     public Player(String name, int health, int level) {
         super(name, health, level);
-        this.inventory = new ArrayList<>();
+        this.inventory = new Item[0];
     }
 
-    public Player(String name, int health, int level, ArrayList<Item> inventory) {
+    public Player(String name, int health, int level, Item[] inventory) {
         super(name, health, level);
-        this.inventory = new ArrayList<>(inventory);
+
+        this.inventory = new Item[inventory.length];
+        for (int i = 0; i < inventory.length; i++) {
+            this.inventory[i] = inventory[i];
+        }
     }
 
     public void addItem(Item item) {
-        inventory.add(item);
+        Item[] newArr = new Item[inventory.length + 1];
+        for (int i = 0; i < inventory.length; i++) {
+            newArr[i] = inventory[i];
+        }
+        newArr[inventory.length] = item;
+        inventory = newArr;
     }
 
     public int calculateInventoryValue() {
         int val = 0;
-        for (int i = 0; i < inventory.size(); i++) {
-            val += inventory.get(i).getValue();
+        for (int i = 0; i < inventory.length; i++) {
+            val += inventory[i].getValue();
         }
         return val;
     }
 
     public boolean hasMagicalItem() {
-        for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).isMagical())
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i].isMagical())
                 return true;
         }
         return false;
@@ -37,12 +44,13 @@ public class Player extends Character {
     @Override
     public String toString() {
         String items = "";
-        for (int i = 0; i < inventory.size(); i++) {
-            items += inventory.get(i).getName();
-            if (i < inventory.size() - 1) {
+        for (int i = 0; i < inventory.length; i++) {
+            items += inventory[i].getName();
+            if (i < inventory.length - 1) {
                 items += " | ";
             }
         }
-        return super.toString() + "\nInventory: " + items + "\n" + "Inventory value: " + calculateInventoryValue();
+        return super.toString() + "\nInventory: " + items + "\n" +
+               "Inventory value: " + calculateInventoryValue();
     }
 }

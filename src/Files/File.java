@@ -9,31 +9,35 @@ public class File {
 				BufferedReader fileHedva = new BufferedReader(new FileReader("hedva.txt"));
 				PrintWriter output = new PrintWriter(new FileWriter("report.txt"))) {
 
-			String lineCS = fileCS.readLine();
-			String lineHedva = fileHedva.readLine();
+			String cs = fileCS.readLine();
+			String hedva = fileHedva.readLine();
 
-			while (lineCS != null && lineHedva != null) {
+			System.out.println("File created:");
+			while (cs != null && hedva != null) {
 
-				String[] infoCS = lineCS.split(" ");
-				String[] infoHedva = lineHedva.split(" ");
+				String[] infoCS = cs.split(" ");
+				String[] infoHedva = hedva.split(" ");
 
 				int id1 = Integer.parseInt(infoCS[infoCS.length - 1]);
 				int id2 = Integer.parseInt(infoHedva[0]);
 
+				
 				if (id1 == id2) {
 					int grade1 = Integer.parseInt(infoHedva[1]);
 					int grade2 = Integer.parseInt(infoHedva[2]);
 					double avg = (grade1 + grade2) / 2;
 					output.println(id1 + " " + infoCS[0] + " " + infoCS[1] + " " + avg);
+					System.out.println(id1 + " " + infoCS[0] + " " + infoCS[1] + " " + avg);
 
-					lineCS = fileCS.readLine();
-					lineHedva = fileHedva.readLine();
+
+					cs = fileCS.readLine();
+					hedva = fileHedva.readLine();
 
 				} else if (id1 < id2) {
-					lineCS = fileCS.readLine();
+					cs = fileCS.readLine();
 
 				} else {
-					lineHedva = fileHedva.readLine();
+					hedva = fileHedva.readLine();
 				}
 			}
 

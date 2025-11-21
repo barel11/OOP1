@@ -1,49 +1,61 @@
-import java.util.ArrayList;
-
 public class GameWorld {
 
     private String name;
-    private ArrayList<Player> players;
-    private ArrayList<Enemy> enemies;
+    private Player[] players;
+    private Enemy[] enemies;
     private int difficulty; // 1-3
 
     public GameWorld() {
         this.name = "Crystalpath";
-        this.players = new ArrayList<>();
-        this.enemies = new ArrayList<>();
+        this.players = new Player[0];
+        this.enemies = new Enemy[0];
         this.difficulty = 1;
     }
 
-    public GameWorld(String name, int difficulty, ArrayList<Player> players, ArrayList<Enemy> enemies) {
+    public GameWorld(String name, int difficulty, Player[] players, Enemy[] enemies) {
         this.name = name;
         this.difficulty = difficulty;
-        this.players = new ArrayList<>(players);
-        this.enemies = new ArrayList<>(enemies);
+
+        this.players = new Player[players.length];
+        for (int i = 0; i < players.length; i++) {
+            this.players[i] = players[i];
+        }
+
+        this.enemies = new Enemy[enemies.length];
+        for (int i = 0; i < enemies.length; i++) {
+            this.enemies[i] = enemies[i];
+        }
     }
 
     public void addPlayer(Player player) {
-        players.add(player);
+        Player[] newArr = new Player[players.length + 1];
+        for (int i = 0; i < players.length; i++) {
+            newArr[i] = players[i];
+        }
+        newArr[players.length] = player;
+        players = newArr;
     }
-    
+
     public void printAllPlayers() {
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 0; i < players.length; i++) {
             System.out.println("------- Player " + (i + 1) + " -------");
-            System.out.println(players.get(i).toString());
+            System.out.println(players[i].toString());
         }
     }
-    
+
     public int getTotalValueOfWorld() {
-    	int total = 0;
-    	for(int i = 0 ; i < players.size() ; i++) {
-    		total += players.get(i).calculateInventoryValue();
-    	}
-    	return total;
+        int total = 0;
+        for (int i = 0; i < players.length; i++) {
+            total += players[i].calculateInventoryValue();
+        }
+        return total;
     }
-    
+
     @Override
     public String toString() {
-    	return "World Name: " + name + "\n" + "Difficulty: " + difficulty + "\n" +
-    			"Number of players: " + players.size();
+        return "World Name: " + name + "\n" +
+               "Difficulty: " + difficulty + "\n" +
+               "Number of players: " + players.length;
     }
 
 }
